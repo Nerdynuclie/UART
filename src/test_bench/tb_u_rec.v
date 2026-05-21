@@ -77,23 +77,17 @@ begin
     begin
         if(rec_dataH == expected_data)
         begin
-            $display("--------------------------------");
             $display("TEST PASS");
             $display("EXPECTED = %h", expected_data);
             $display("RECEIVED = %h", rec_dataH);
-            $display("--------------------------------");
-
             pass_count = pass_count + 1;
         end
         else
-        begin
-            $display("--------------------------------");
+        begin 
             $display("TEST FAIL");
             $display("EXPECTED = %h", expected_data);
             $display("RECEIVED = %h", rec_dataH);
-            $display("--------------------------------");
-
-            fail_count = fail_count + 1;
+                fail_count = fail_count + 1;
         end
     end
     else
@@ -150,27 +144,15 @@ initial begin
     uart_rec_dataH = 1'b1;
 
     // SUMMARY
-    $display("\n====================================");
     $display("UART RECEIVER TEST SUMMARY");
     $display("PASS COUNT = %0d", pass_count);
     $display("FAIL COUNT = %0d", fail_count);
-    $display("====================================\n");
-
     #100;
     $finish;
 
 end
-
-// MONITOR
 initial begin
-
-    $monitor("TIME=%0t RX=%b BUSY=%b DATA=%h",
-             $time,
-             uart_rec_dataH,
-             rec_busy,
-             rec_dataH);
-
+    $monitor("TIME=%0t RX=%b BUSY=%b DATA=%h",$time,uart_rec_dataH,rec_busy,rec_dataH);
 end
-
 endmodule
 
