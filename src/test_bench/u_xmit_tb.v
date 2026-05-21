@@ -187,12 +187,9 @@ initial begin
     pass_count = total_count - fail_count;
 
     // SUMMARY
-    $display("\n====================================");
     $display(" TOTAL TESTS = %0d", total_count);
     $display(" PASS COUNT  = %0d", pass_count);
     $display(" FAIL COUNT  = %0d", fail_count);
-    $display("====================================\n");
-
     #100;
     $finish;
 
